@@ -25,6 +25,12 @@ public class PrijavaZaVakcinu {
         this.datumVreme = datumVreme;
     }
 
+    public PrijavaZaVakcinu(Korisnik korisnik, Vakcina vakcina, DozaVakcine doza) {
+        this.korisnik = korisnik;
+        this.vakcina = vakcina;
+        this.doza = doza;
+    }
+
     public int getPrijavaID() {
         return prijavaID;
     }
