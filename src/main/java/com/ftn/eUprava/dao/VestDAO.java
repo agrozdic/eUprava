@@ -7,8 +7,8 @@ public interface VestDAO {
 
     Vest findOne(int vestID);
     List<Vest> findAll();
-    Vest save(Vest vest);
-    Vest update(Vest vest);
-    Vest delete(int vestID);
+    int save(Vest vest);
+    int update(Vest vest);
+    int delete(int vestID);
 
 }
