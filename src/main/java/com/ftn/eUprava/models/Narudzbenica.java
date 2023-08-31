@@ -27,6 +27,13 @@ public class Narudzbenica {
         this.status = status;
     }
 
+    public Narudzbenica(Vakcina vakcina, int kolicina, String komentar, StatusZahteva status) {
+        this.vakcina = vakcina;
+        this.kolicina = kolicina;
+        this.komentar = komentar;
+        this.status = status;
+    }
+
     public int getNarudzbenicaID() {
         return narudzbenicaID;
     }
