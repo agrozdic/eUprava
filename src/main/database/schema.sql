@@ -100,7 +100,7 @@ INSERT INTO Vakcina(Naziv, DostupnaKolicina, ProizvodjacID) VALUES ('Pfizer C-00
 INSERT INTO Vakcina(Naziv, ProizvodjacID) VALUES ('Moderna SZF744', 2);
 INSERT INTO Vakcina(Naziv, ProizvodjacID) VALUES ('AZ CVD19', 3);
 
-INSERT INTO Vest(Naslov, Sadrzaj, DatumVreme ) VALUES (
+INSERT INTO Vest(Naslov, Sadrzaj, DatumVreme) VALUES (
     'WHO Declares End to COVID-19 as Global Health Emergency',
     'The World Health Organization (WHO) Director-General has determined that COVID-19 “is now an established and ongoing health issue which no longer constitutes a public health emergency of international concern (PHEIC).” The announcement comes more than three years after WHO declared the outbreak of the novel coronavirus a global health emergency.',
     '2023-05-10 12:00:00');

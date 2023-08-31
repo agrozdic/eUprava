@@ -37,7 +37,7 @@ public class ProizvodjacDAOImpelementation implements ProizvodjacDAO{
             int proizvodjacID = resultSet.getInt(index++);
             String naziv = resultSet.getString(index++);
             String drzava = resultSet.getString(index++);
-            Proizvodjac proizvodjac = proizvodjaci.get(id);
+            Proizvodjac proizvodjac = proizvodjaci.get(proizvodjacID);
             if (proizvodjac == null) {
                 proizvodjac = new Proizvodjac(proizvodjacID, naziv, drzava);
                 proizvodjaci.put(proizvodjac.getProizvodjacID(), proizvodjac);

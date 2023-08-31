@@ -7,8 +7,8 @@ public interface OboleliVestDAO {
 
     OboleliVest findOne(int oboleliVestID);
     List<OboleliVest> findAll();
-    OboleliVest save(OboleliVest oboleliVest);
-    OboleliVest update(OboleliVest oboleliVest);
-    OboleliVest delete(int oboleliVestID);
+    int save(OboleliVest oboleliVest);
+    int update(OboleliVest oboleliVest);
+    int delete(int oboleliVestID);
 
 }
