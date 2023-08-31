@@ -7,8 +7,8 @@ public interface NarudzbenicaDAO {
 
     Narudzbenica findOne(int narudzbenicaID);
     List<Narudzbenica> findAll();
-    Narudzbenica save(Narudzbenica narudzbenica);
-    Narudzbenica update(Narudzbenica narudzbenica);
-    Narudzbenica delete(int narudzbenicaID);
+    int save(Narudzbenica narudzbenica);
+    int update(Narudzbenica narudzbenica);
+    int delete(int narudzbenicaID);
 
 }
