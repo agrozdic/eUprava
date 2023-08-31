@@ -7,10 +7,10 @@ public interface VakcinaDAO {
 
     Vakcina findOne(int vakcinaID);
     List<Vakcina> findAll();
-    Vakcina save(Vakcina vakcina);
-    Vakcina update(Vakcina vakcina);
-    Vakcina delete(int vakcinaID);
-    List<Vakcina> find(String ime, int dostupnaKolicinaMin, int dostupnaKolicinaMax,
+    int save(Vakcina vakcina);
+    int update(Vakcina vakcina);
+    int delete(int vakcinaID);
+    List<Vakcina> find(String naziv, Integer dostupnaKolicinaMin, Integer dostupnaKolicinaMax,
                        String proizvodjac, String drzava);
 
 }
