@@ -15,6 +15,12 @@ public class Vest {
         this.dvObjave = dvObjave;
     }
 
+    public Vest(String naslov, String sadrzaj, LocalDateTime dvObjave) {
+        this.naslov = naslov;
+        this.sadrzaj = sadrzaj;
+        this.dvObjave = dvObjave;
+    }
+
     public int getVestID() {
         return vestID;
     }

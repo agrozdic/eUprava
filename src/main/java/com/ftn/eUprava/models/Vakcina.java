@@ -13,6 +13,12 @@ public class Vakcina {
         this.proizvodjac = proizvodjac;
     }
 
+    public Vakcina(String naziv, int dostupnaKolicina, Proizvodjac proizvodjac) {
+        this.naziv = naziv;
+        this.dostupnaKolicina = dostupnaKolicina;
+        this.proizvodjac = proizvodjac;
+    }
+
     public int getVakcinaID() {
         return vakcinaID;
     }

@@ -21,6 +21,15 @@ public class OboleliVest {
         this.dvObjave = dvObjave;
     }
 
+    public OboleliVest(int brObolelih, int brTestiranih, int brUkupno, int brHospitalizovanih, int brNaRespiratoru, LocalDateTime dvObjave) {
+        this.brObolelih = brObolelih;
+        this.brTestiranih = brTestiranih;
+        this.brUkupno = brUkupno;
+        this.brHospitalizovanih = brHospitalizovanih;
+        this.brNaRespiratoru = brNaRespiratoru;
+        this.dvObjave = dvObjave;
+    }
+
     public int getoboleliVestID() {
         return oboleliVestID;
     }

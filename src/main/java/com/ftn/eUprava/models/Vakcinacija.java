@@ -18,6 +18,13 @@ public class Vakcinacija {
         this.datumVreme = datumVreme;
     }
 
+    public Vakcinacija(Korisnik korisnik, Vakcina vakcina, DozaVakcine doza, LocalDateTime datumVreme) {
+        this.korisnik = korisnik;
+        this.vakcina = vakcina;
+        this.doza = doza;
+        this.datumVreme = datumVreme;
+    }
+
     public int getVakcinacijaID() {
         return vakcinacijaID;
     }

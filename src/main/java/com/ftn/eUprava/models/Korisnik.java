@@ -32,6 +32,19 @@ public class Korisnik {
         this.uloga = uloga;
     }
 
+    public Korisnik(String email, String lozinka, String ime, String prezime, LocalDate datumRodjenja, String jmbg, String adresa, String brojTelefona, LocalDateTime dvRegistracije, Uloga uloga) {
+        this.email = email;
+        this.lozinka = lozinka;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.datumRodjenja = datumRodjenja;
+        this.jmbg = jmbg;
+        this.adresa = adresa;
+        this.brojTelefona = brojTelefona;
+        this.dvRegistracije = dvRegistracije;
+        this.uloga = uloga;
+    }
+
     public int getKorisnikID() {
         return korisnikID;
     }

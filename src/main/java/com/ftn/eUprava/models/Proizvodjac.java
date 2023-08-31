@@ -11,6 +11,11 @@ public class Proizvodjac {
         this.drzava = drzava;
     }
 
+    public Proizvodjac(String naziv, String drzava) {
+        this.naziv = naziv;
+        this.drzava = drzava;
+    }
+
     public int getProizvodjacID() {
         return proizvodjacID;
     }
