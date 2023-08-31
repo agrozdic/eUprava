@@ -1,24 +1,24 @@
 package com.ftn.eUprava.models;
 
 public class Vakcina {
-    private int id;
+    private int vakcinaID;
     private String naziv;
     private int dostupnaKolicina;
     private Proizvodjac proizvodjac;
 
-    public Vakcina(int id, String naziv, int dostupnaKolicina, Proizvodjac proizvodjac) {
-        this.id = id;
+    public Vakcina(int vakcinaID, String naziv, int dostupnaKolicina, Proizvodjac proizvodjac) {
+        this.vakcinaID = vakcinaID;
         this.naziv = naziv;
         this.dostupnaKolicina = dostupnaKolicina;
         this.proizvodjac = proizvodjac;
     }
 
-    public int getId() {
-        return id;
+    public int getVakcinaID() {
+        return vakcinaID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setVakcinaID(int vakcinaID) {
+        this.vakcinaID = vakcinaID;
     }
 
     public String getNaziv() {
@@ -48,7 +48,7 @@ public class Vakcina {
     @Override
     public String toString() {
         return
-                "Vakcina ID: " + id + "\n" +
+                "Vakcina ID: " + vakcinaID + "\n" +
                 "Naziv:" + naziv + "\n" +
                 "Dostupna kolicina: " + dostupnaKolicina + "\n" +
                 "Proizvodjac: " + proizvodjac.getNaziv();

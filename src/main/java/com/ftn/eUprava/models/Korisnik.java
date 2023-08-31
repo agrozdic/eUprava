@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 public class Korisnik {
 
-    private int id;
+    private int korisnikID;
     private String email;
     private String lozinka;
     private String ime;
@@ -15,15 +15,11 @@ public class Korisnik {
     private String adresa;
     private String brojTelefona;
     private LocalDateTime dvRegistracije; //datum i vreme registracije
-    private UlogaEnum uloga;
+    private Uloga uloga;
 
-    public Korisnik() {
-        super();
-    }
-
-    public Korisnik(String email, String lozinka, String ime, String prezime, LocalDate datumRodjenja, String jmbg,
-                    String adresa, String brojTelefona, LocalDateTime dvRegistracije, UlogaEnum uloga) {
-        super();
+    public Korisnik(int korisnikID, String email, String lozinka, String ime, String prezime, LocalDate datumRodjenja, String jmbg,
+                    String adresa, String brojTelefona, LocalDateTime dvRegistracije, Uloga uloga) {
+        this.korisnikID = korisnikID;
         this.email = email;
         this.lozinka = lozinka;
         this.ime = ime;
@@ -36,12 +32,12 @@ public class Korisnik {
         this.uloga = uloga;
     }
 
-    public int getId() {
-        return id;
+    public int getKorisnikID() {
+        return korisnikID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setKorisnikID(int korisnikID) {
+        this.korisnikID = korisnikID;
     }
 
     public String getEmail() {
@@ -116,18 +112,18 @@ public class Korisnik {
         this.dvRegistracije = dvRegistracije;
     }
 
-    public UlogaEnum getUloga() {
+    public Uloga getUloga() {
         return uloga;
     }
 
-    public void setUloga(UlogaEnum uloga) {
+    public void setUloga(Uloga uloga) {
         this.uloga = uloga;
     }
 
     @Override
     public String toString() {
         return
-                "Korisnik ID"  + id + "\n" +
+                "Korisnik ID"  + korisnikID + "\n" +
                 "Email: " + email + "\n" +
                 "Lozinka: " + lozinka + "\n" +
                 "Ime: " + ime + "\n" +

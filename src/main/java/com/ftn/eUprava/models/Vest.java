@@ -3,24 +3,24 @@ package com.ftn.eUprava.models;
 import java.time.LocalDateTime;
 
 public class Vest {
-    private int id;
+    private int vestID;
     private String naslov;
     private String sadrzaj;
     private LocalDateTime dvObjave; // datum i vreme objave
 
-    public Vest(int id, String naslov, String sadrzaj, LocalDateTime dvObjave) {
-        this.id = id;
+    public Vest(int vestID, String naslov, String sadrzaj, LocalDateTime dvObjave) {
+        this.vestID = vestID;
         this.naslov = naslov;
         this.sadrzaj = sadrzaj;
         this.dvObjave = dvObjave;
     }
 
-    public int getId() {
-        return id;
+    public int getVestID() {
+        return vestID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setVestID(int vestID) {
+        this.vestID = vestID;
     }
 
     public String getNaslov() {
@@ -50,7 +50,7 @@ public class Vest {
     @Override
     public String toString() {
         return
-                "Vest ID: " + id + "\n" +
+                "Vest ID: " + vestID + "\n" +
                 "Naslov: " + naslov + "\n" +
                 "Sadrzaj: " + sadrzaj + "\n" +
                 "Datum i vreme objave: " + dvObjave;

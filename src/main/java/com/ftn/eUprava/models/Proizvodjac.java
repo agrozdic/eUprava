@@ -1,22 +1,22 @@
 package com.ftn.eUprava.models;
 
 public class Proizvodjac {
-    private int id;
+    private int proizvodjacID;
     private String naziv;
     private String drzava;
 
-    public Proizvodjac(int id, String naziv, String drzava) {
-        this.id = id;
+    public Proizvodjac(int proizvodjacID, String naziv, String drzava) {
+        this.proizvodjacID = proizvodjacID;
         this.naziv = naziv;
         this.drzava = drzava;
     }
 
-    public int getId() {
-        return id;
+    public int getProizvodjacID() {
+        return proizvodjacID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setProizvodjacID(int proizvodjacID) {
+        this.proizvodjacID = proizvodjacID;
     }
 
     public String getNaziv() {
@@ -38,7 +38,7 @@ public class Proizvodjac {
     @Override
     public String toString() {
         return
-                "Proizvodjac ID: " + id + "\n" +
+                "Proizvodjac ID: " + proizvodjacID + "\n" +
                 "Naziv: " + naziv + "\n" +
                 "Drzava: " + drzava;
     }

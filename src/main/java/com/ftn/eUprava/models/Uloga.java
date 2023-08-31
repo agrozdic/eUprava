@@ -1,6 +1,6 @@
 package com.ftn.eUprava.models;
 
-public enum UlogaEnum {
+public enum Uloga {
 
     PACIJENT, MEDICINSKO_OSOBLJE, ADMINISTRATOR
 
