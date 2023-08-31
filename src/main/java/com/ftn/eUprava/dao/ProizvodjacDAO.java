@@ -7,8 +7,8 @@ public interface ProizvodjacDAO {
 
     Proizvodjac findOne(int proizvodjacID);
     List<Proizvodjac> findAll();
-    Proizvodjac save(Proizvodjac proizvodjac);
-    Proizvodjac update(Proizvodjac proizvodjac);
-    Proizvodjac delete(int proizvodjacID);
+    int save(Proizvodjac proizvodjac);
+    int update(Proizvodjac proizvodjac);
+    int delete(int proizvodjacID);
 
 }

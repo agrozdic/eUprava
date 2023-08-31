@@ -92,7 +92,7 @@ VALUES ('canacanic@mail.com', 'cana123', 'Cana', 'Canic', '2002-03-03', '0303002
 INSERT INTO Korisnik(Email, Lozinka, Ime, Prezime, DatumRodjenja, JMBG, Adresa, BrojTelefona)
 VALUES ('dejandejanic@mail.com', 'dejan123', 'Dejan', 'Dejanic', '2003-04-04', '0404003860123', 'Adresa 4, Grad', '0632345678')
 
-INSERT INTO Proizvodjac(Naziv, Drzava)VALUES ('Pfizer', 'SAD');
+INSERT INTO Proizvodjac(Naziv, Drzava) VALUES ('Pfizer', 'SAD');
 INSERT INTO Proizvodjac(Naziv, Drzava) VALUES ('Moderna', 'UK');
 INSERT INTO Proizvodjac(Naziv, Drzava) VALUES ('AstraZeneca', 'Svedska');
 
