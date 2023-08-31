@@ -3,7 +3,7 @@ package com.ftn.eUprava.models;
 import java.time.LocalDateTime;
 
 public class OboleliVest {
-    private int OboleliVestID;
+    private int oboleliVestID;
     private int brObolelih; // broj oboleleih u 24h
     private int brTestiranih; // broj testiranih u 24h
     private int brUkupno; // broj ukupno obolelih
@@ -11,8 +11,8 @@ public class OboleliVest {
     private int brNaRespiratoru;
     private LocalDateTime dvObjave; // datum i vreme objave
 
-    public OboleliVest(int OboleliVestID, int brObolelih, int brTestiranih, int brUkupno, int brHospitalizovanih, int brNaRespiratoru, LocalDateTime dvObjave) {
-        this.OboleliVestID = OboleliVestID;
+    public OboleliVest(int oboleliVestID, int brObolelih, int brTestiranih, int brUkupno, int brHospitalizovanih, int brNaRespiratoru, LocalDateTime dvObjave) {
+        this.oboleliVestID = oboleliVestID;
         this.brObolelih = brObolelih;
         this.brTestiranih = brTestiranih;
         this.brUkupno = brUkupno;
@@ -21,12 +21,12 @@ public class OboleliVest {
         this.dvObjave = dvObjave;
     }
 
-    public int getOboleliVestID() {
-        return OboleliVestID;
+    public int getoboleliVestID() {
+        return oboleliVestID;
     }
 
-    public void setOboleliVestID(int oboleliVestID) {
-        this.OboleliVestID = oboleliVestID;
+    public void setoboleliVestID(int oboleliVestID) {
+        this.oboleliVestID = oboleliVestID;
     }
 
     public int getBrObolelih() {
@@ -80,7 +80,7 @@ public class OboleliVest {
     @Override
     public String toString() {
         return
-                "Vest o obolelima ID:" + OboleliVestID + "\n" +
+                "Vest o obolelima ID:" + oboleliVestID + "\n" +
                 "Broj obolelih u poslednjih 24h: " + brObolelih + "\n" +
                 "Broj testiranih u poslednjih 24h: " + brTestiranih + "\n" +
                 "Ukupan broj obolelih od pocetka pandemije: " + brUkupno + "\n" +
