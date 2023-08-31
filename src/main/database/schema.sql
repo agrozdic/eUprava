@@ -64,7 +64,7 @@ CREATE TABLE PrijavaZaVakcinu(
     PrijavaID INT AUTO_INCREMENT PRIMARY KEY,
     KorisnikID INT,
     VakcinaID INT,
-    Doza ENUM('PRVA', 'DRUGA', 'TRECA', 'CETVRTA'),
+    DozaVakcine ENUM('PRVA', 'DRUGA', 'TRECA', 'CETVRTA'),
     DatumVreme DATETIME NOT NULL DEFAULT NOW(),
     FOREIGN KEY (KorisnikID) REFERENCES Korisnik (KorisnikID) ON DELETE CASCADE,
     FOREIGN KEY (VakcinaID) REFERENCES Vakcina (VakcinaID) ON DELETE CASCADE
