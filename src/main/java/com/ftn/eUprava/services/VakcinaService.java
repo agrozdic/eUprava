@@ -10,7 +10,7 @@ public interface VakcinaService {
     Vakcina save(Vakcina vakcina);
     Vakcina update(Vakcina vakcina);
     Vakcina delete(int vakcinaID);
-    List<Vakcina> find(String ime, int dostupnaKolicinaMin, int dostupnaKolicinaMax,
+    List<Vakcina> find(String ime, Integer dostupnaKolicinaMin, Integer dostupnaKolicinaMax,
                        String proizvodjac, String drzava);
 
 }
