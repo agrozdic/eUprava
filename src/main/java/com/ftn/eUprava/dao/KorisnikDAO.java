@@ -1,17 +1,26 @@
-package com.ftn.eUprava.dao;
+package com.ftn.EUprava.dao;
 
 import java.util.List;
-import com.ftn.eUprava.models.*;
+
+import com.ftn.EUprava.model.Korisnik;
+
+
 public interface KorisnikDAO {
-    Korisnik findOne(String email);
-    Korisnik findOneByJMBG(String jmbg);
+	public Korisnik findOne(Long id);
+	
+	public Korisnik findOne(String email); 
+	
+	public Korisnik findOneByJMBG(String jmbg); 
+	
+	public Korisnik findOne(String email, String lozinka);
 
-    Korisnik findOne(int korisnikID);
+	public List<Korisnik> findAll();
 
-    Korisnik findOne(String email, String lozinka);
-    List<Korisnik> findAll();
-    int save(Korisnik korisnik);
-    int update(Korisnik korisnik);
-    int delete(int korisnikID);
+	public int save(Korisnik korisnik);
 
-}
+	public int update(Korisnik korisnik);
+
+	public int delete(Long id);
+	
+	
+	}

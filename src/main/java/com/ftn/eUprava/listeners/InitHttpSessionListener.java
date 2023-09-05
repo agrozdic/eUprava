@@ -1,4 +1,4 @@
-package com.ftn.eUprava.listeners;
+package com.ftn.EUprava.listeners;
 
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
@@ -10,9 +10,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class InitHttpSessionListener implements HttpSessionListener{
 
-    public void sessionCreated(HttpSessionEvent httpSessionEvent) {
-
-        HttpSession session = httpSessionEvent.getSession();
-
-    }
+	public void sessionCreated(HttpSessionEvent httpSessionEvent) {
+		
+		
+		HttpSession session = httpSessionEvent.getSession();
+		
+		
+		
+		
+	}
 }

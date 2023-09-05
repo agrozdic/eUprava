@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<base th:href="@{/}">
+	<link rel="stylesheet" type="text/css" href="css/StiloviForma.css"/>
+	<link rel="stylesheet" type="text/css" href="css/StiloviTabela.css"/>
+	<link rel="stylesheet" type="text/css" href="css/StiloviHorizontalniMeni.css"/>	
+	<title>Nabavka</title>
+</head>
+<body>
+<h2>EUprava</h2>
+	 <nav>
+	  <div class="navigation">  
+	 	<ul>     
+	 <li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}"
+	 		><a href="korisnici" >Korisnici</a></li>
+			<li th:if="${session.korisnik != null }"><a href="vakcine">Vakcine</a></li>
+			<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}">
+			<a href="proizvodjaciVakcine">Proizvodjaci vakcine</a></li>
+	 		<li><a href="vesti">Vesti</a></li>   
+	 		<li><a href="vestiOObolelima">Statistika o obolelima</a></li>   
+	 		<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'PACIJENT'}">
+			<a href="primljeneVakcine">Primljene vakcine</a></li>
+			<li  th:if="${session.korisnik != null}">
+			<a href="prijaveZaVakcinaciju">Prijava za vakcinaciju</a></li>
+			<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() != 'PACIJENT'}">
+			<a href="nabavke">Nabavka</a></li>      
+	 		<li><a href="">Odjava</a></li>      
+	 	</ul>     
+	 	</div>
+	</nav>
+	
+	<section class="content">
+	<div class = "content">
+	
+	<form  method="post" action="nabavke/edit" style="margin-top: 200px; margin-left: -500px;">
+		<input type="hidden" name="id" th:value="${nabavka.id}"/>
+		<table class="forma" style="margin-top: 300px; margin-left: 0px;">
+			<caption>Nabavka</caption>
+			<tr>
+			
+ 				<th>Vakcina:</th>
+				<td>
+					<select name = "vakcinaId">
+						<option th:each="itVakcine: ${vakcine}" 
+						th:value="${itVakcine.id}" 
+						th:text="|${itVakcine.ime}  |"
+						 th:selected="${itVakcine.id == nabavka.vakcina.id}">
+						</option>
+					</select>
+					
+					
+				</td>
+			</tr>      
+			<tr><th>Kolicina:</th><td><input type="number" th:value="${nabavka.kolicina}"
+			 name="kolicina" required/></td></tr>
+			 
+			 <tr><th>Komentar:</th><td><input 
+			 type="text" th:value="${nabavka.komentar}" name="komentar"/></td></tr>
+			 <tr>
+ 				<th>Status:</th>
+				<td>
+			    <select name="status" >
+			      <option  
+			       th:each="estatus: ${T(com.ftn.EUprava.model.EStatus).values()}" 
+			                th:value="${estatus}" 
+			              th:text="${estatus}"
+			               th:selected="${estatus == nabavka.status}">
+			      </option>
+			    </select>
+			  </td>
+				
+			</tr>   
+			   
+		
+			<tr><th></th><td><input th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'MEDICINSKOOSOBLJE'}"
+			 type="submit" value="Izmeni"/></td></tr>
+			 
+			<tr><th></th><td><input th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}"
+			 type="submit" value="Odbij/ Vrati na reviziju"/></td></tr>
+			 
+			 <input th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}"
+		type="hidden" name="id" th:value="${nabavka.id}"/>
+			<tr><th></th><td><input type="submit" formaction="nabavke/odobri" value="Odobri"/></td></tr>
+		</form>
+	
+		
+		</table>
+	</div>
+	</section>
+	
+	
+</body>
+</html>

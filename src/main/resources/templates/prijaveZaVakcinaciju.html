@@ -1,0 +1,162 @@
+<!DOCTYPE html> 
+<html xmlns:th="http://www.thymeleaf.org">     
+	<head>     
+		<meta charset="UTF-8">     
+		<base th:href="@{/}">
+		<title>Prijave za vakcinacju</title>     
+		<link rel="stylesheet"  type="text/css"  href="css/StiloviTabela.css"/>     
+	 	<link rel="stylesheet"  type="text/css" href="css/StiloviHorizontalniMeni.css"/> 
+	  	
+	 </head>     
+	 <body>   
+	 <h2>EUprava</h2>
+	  <nav>
+	  <div class="navigation">  
+	 	<ul>     
+	 		<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}"
+	 		><a href="korisnici" >Korisnici</a></li>
+			<li th:if="${session.korisnik != null }"><a href="vakcine">Vakcine</a></li>
+			<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}">
+			<a href="proizvodjaciVakcine">Proizvodjaci vakcine</a></li>
+	 		<li><a href="vesti">Vesti</a></li>   
+	 		<li><a href="vestiOObolelima">Statistika o obolelima</a></li> 
+	 		  
+	 		<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'PACIJENT'}">
+			<a href="primljeneVakcine">Primljene vakcine</a></li>
+			<li  th:if="${session.korisnik != null}">
+			<a href="prijaveZaVakcinaciju">Prijava za vakcinaciju</a></li>
+			<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() != 'PACIJENT'}">
+			<a href="nabavke">Nabavka</a></li>
+			     
+	 	</ul>     
+	 	</div>
+	</nav>
+	
+	 <section class="registrationForm">
+	<div class = "registrationForm">
+	<table th:unless="${session.korisnik == null}"> 
+	<tr><th>Prijavljeni ste kao</th><td><a th:href="|korisnici/details?id=${session.korisnik.id}|" 
+	th:text="${session.korisnik.email}"></a>.</td></tr>
+		<tr>
+			<td colspan="2">
+				<ul>
+					<li><a href="korisnici/logout">Odjava</a></li>
+				</ul>
+			</td>
+		</tr>
+	</table>
+	<table th:if="${session.korisnik == null}">
+		<tr><th>Niste prijavljeni</th></tr>
+		<tr>
+			<td>
+				<ul>
+					<li><a href="registracija.html">Registracija</a></li>
+					<li><a href="prijava.html">Prijava</a></li>
+				</ul>
+			</td>
+		</tr>
+	</table>
+	</div>
+	</section>
+	
+	<section class="content">
+	<div class = "content">
+		
+	 		<table  class="tabela">     
+	 			<caption>Prijave za vakcinaciju</caption>     
+	 			<tr>     
+	 				<th>R. br.</th> 
+	 				<th>Ime pacijenta</th> 
+	 				<th>Prezime pacijenta</th> 
+	 				<th>Jmbg pacijenta</th>     
+	 				<th>Vakcina</th>     
+	 				<th>Doza</th>  
+	 				<th>Datum i vreme prijave</th> 
+	 				<th></th>   
+	 				<th></th>   
+	 				  
+	 			</tr>
+	 			<form  method="post"  action="prijaveZaVakcinaciju/search" >     
+	 				<tr>  
+	 				<th></th>     
+	 				 
+	 				<th>
+						<select name="ime">
+							<option value=""></option>
+							<option th:each="itKor:${korisnici}" 
+							th:value="${itKor.ime}" 
+								th:text="|${itKor.ime} |"
+								 th:selected="${#strings.equals(itKor.ime, param.ime)}"
+								 th:if = "${itKor.uloga.toString() == 'PACIJENT'}"></option>
+						</select>
+						
+					</th>    
+					<th>
+						<select name="prezime">
+							<option value=""></option>
+							<option th:each="itKor:${korisnici}" 
+							th:value="${itKor.prezime}" 
+								th:text="|${itKor.prezime} |"
+								 th:selected="${#strings.equals(itKor.prezime, param.prezime)}"
+								  th:if = "${itKor.uloga.toString() == 'PACIJENT'}"></option>
+						</select>
+						
+					</th>    
+					<th>
+						<select name="jmbg">
+							<option value=""></option>
+							<option th:each="itKor:${korisnici}" 
+							th:value="${itKor.jmbg}" 
+								th:text="|${itKor.jmbg} |"
+								 th:selected="${#strings.equals(itKor.jmbg, param.jmbg)}"
+								  th:if = "${itKor.uloga.toString() == 'PACIJENT'}"></option>
+						</select>
+						
+					</th>    
+					
+	 				  
+	 				<th></th>  
+	 				<th></th>  
+	 				<th></th>  
+	 				<th></th>    
+	 				<th>
+	 				 
+	 						<input type="submit"  value="Pretrazi" >    
+	 				
+	 			</tr>
+	 		
+	 			<tr th:each="itPrijava, status: ${prijaveZaVakcinaciju}" 
+	 			th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'PACIJENT'} ?
+	 			 ${itPrijava.korisnik.id == session.korisnik.id} : true">
+			    <td class="broj" th:text="${(status.index + 1)+'.'}"></td>
+			    <td th:text="|${itPrijava.korisnik.ime} |"></td>
+			     <td th:text="|${itPrijava.korisnik.prezime} |"></td>
+			      <td th:text="|${itPrijava.korisnik.jmbg}  |"></td>
+			    <td th:text="|${itPrijava.vakcina.ime}|"></td>
+			    <td th:text="${itPrijava.doza}"></td>
+			    <td th:text="${itPrijava.datumIVremePrijave}"></td>
+			     <td><a th:href="|prijaveZaVakcinaciju/details?id=${itPrijava.id}|"
+			      th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'MEDICINSKOOSOBLJE'}" >Daj vakcinu</a></td>
+			    <td>
+			        <form  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'MEDICINSKOOSOBLJE'}"
+			            method="post" action="prijaveZaVakcinaciju/delete" >
+			            <input type="hidden"  name="id"  th:value="${itPrijava.id}">
+			            <input type="submit"  value="Obrisi" >
+			        </form>
+			    </td>
+
+
+	 				
+	 			</tr>
+	 		</table>
+	 		</div>
+	 		</section>
+	 		<div class="alert" th:if="${errorMessage}">
+			  <span th:text="${errorMessage}"></span>
+			</div>
+	 	    <div class = 'btn'> 
+	 	<a  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'PACIJENT'}"
+	 	 href="prijaveZaVakcinaciju/add" class = "btn">Prijavi se za vakcinaciju</a>
+	 </div>
+	 </body>   
+ </html>	

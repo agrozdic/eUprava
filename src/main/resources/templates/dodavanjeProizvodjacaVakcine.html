@@ -1,0 +1,49 @@
+<!DOCTYPE html>    
+ <html xmlns:th="http://www.thymeleaf.org">    
+ <head>    
+ 	<meta charset="UTF-8">   
+ 	<base th:href="@{/}">      
+ 	<link rel="stylesheet" type="text/css" href="css/StiloviForma.css"/>    
+ 	<link rel="stylesheet" type="text/css" href="css/StiloviHorizontalniMeni.css"/>  
+ 	
+ 	<title>Dodaj proizvodjaca vakcine</title>  
+ 
+ </head>   
+ <body>    
+ <h2>EUprava</h2>
+ 	<nav>
+	  <div class="navigation">  
+	 	<ul>     
+	 	<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}"
+	 		><a href="korisnici" >Korisnici</a></li>
+			<li th:if="${session.korisnik != null }"><a href="vakcine">Vakcine</a></li>
+			<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}">
+			<a href="proizvodjaciVakcine">Proizvodjaci vakcine</a></li>
+	 		<li><a href="vesti">Vesti</a></li>   
+	 		<li><a href="vestiOObolelima">Statistika o obolelima</a></li>  
+	 		<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'PACIJENT'}">
+			<a href="primljeneVakcine">Primljene vakcine</a></li>
+			<li  th:if="${session.korisnik != null}">
+			<a href="prijaveZaVakcinaciju">Prijava za vakcinaciju</a></li>
+			<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() != 'PACIJENT'}">
+			<a href="nabavke">Nabavka</a></li>      
+	 		<li><a href="">Odjava</a></li>      
+	 	</ul>     
+	 	</div>
+	</nav>
+	<section class="content">
+	<div class = "content">
+ 	<form method="post" action="proizvodjaciVakcine/add">    
+ 		<table>    
+ 			<caption>Proizvodjac vakcine</caption>    
+ 			<tr><th>Naziv proizvodjaca:</th><td><input type="text" value="" name="proizvodjac" required/></td></tr>   
+ 			<tr><th>Drzava proizvodnje:</th><td><input type="text" value="" name="drzavaProizvodnje" required/></td></tr>   
+ 			
+ 			<tr><th></th><td><input type="submit" value="Dodaj"/></td>    
+ 		</table>    
+ 	</form>   
+ 	</div>
+ 	</section>
+ 	<br/>  
+ </body>  
+ </html>  		

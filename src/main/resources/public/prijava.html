@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+	<meta charset="UTF-8">
+	<base href="">
+	<link rel="stylesheet" type="text/css" href="css/StiloviForma.css"/>
+	<link rel="stylesheet" type="text/css" href="css/StiloviTabela.css"/>
+	<link rel="stylesheet" type="text/css" href="css/StiloviHorizontalniMeni.css"/>	
+	<title>Prijava</title>
+</head>
+<body>
+<h2>EUprava</h2>
+<nav>
+
+	  <div class="navigation">  
+	 	<ul>
+	 		<li><a href="vesti">Vesti</a></li>   
+	 		<li><a href="vestiOObolelima">Statistika o obolelima</a></li>        
+	 		<li><a href="">Pocetna</a></li>  
+	 	</ul>     
+	 	</div >
+	</nav>
+	<br>
+	<br>
+	<br>
+	
+	
+	<table class="navigation">
+		<tr><th>Niste prijavljeni</th></tr>
+		<tr>
+			<td>
+				<ul>
+					<li><a href="registracija.html">Registracija</a></li>
+					<li><a href="prijava.html">Prijava</a></li>
+					
+				</ul>
+			</td>
+		</tr>
+	</table>
+	
+	<form method="post" action="korisnici/login">
+		
+		<table>
+			<caption>Prijava korisnika na sistem</caption>
+			<tr><th>Email:</th><td><input type="text" value="" name="email" required/></td></tr>
+			<tr><th>Lozinka:</th><td><input type="password" value="" name="lozinka" required/></td></tr>
+			<tr><th></th><td><input type="submit" value="Prijavi se" /></td>
+		</table>
+	</form>
+	
+</body>
+</html>

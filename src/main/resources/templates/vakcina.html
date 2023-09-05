@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<base th:href="@{/}"><!-- popuni href atribut vrednosšću context path-a -->
+	<link rel="stylesheet" type="text/css" href="css/StiloviForma.css"/>
+	<link rel="stylesheet" type="text/css" href="css/StiloviTabela.css"/>
+	<link rel="stylesheet" type="text/css" href="css/StiloviHorizontalniMeni.css"/>	
+	<title>Vakcina</title>
+</head>
+<body>
+<h2>EUprava</h2>
+	 <nav>
+	  <div class="navigation">  
+	 	<ul>     
+	 <li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}"
+	 		><a href="korisnici" >Korisnici</a></li>
+			<li th:if="${session.korisnik != null }"><a href="vakcine">Vakcine</a></li>
+			<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}">
+			<a href="proizvodjaciVakcine">Proizvodjaci vakcine</a></li>
+	 		<li><a href="vesti">Vesti</a></li>   
+	 		<li><a href="vestiOObolelima">Statistika o obolelima</a></li>   
+	 		<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'PACIJENT'}">
+			<a href="primljeneVakcine">Primljene vakcine</a></li>
+			<li  th:if="${session.korisnik != null}">
+			<a href="prijaveZaVakcinaciju">Prijava za vakcinaciju</a></li>
+			<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() != 'PACIJENT'}">
+			<a href="nabavke">Nabavka</a></li>      
+	 		<li><a href="">Odjava</a></li>      
+	 	</ul>     
+	 	</div>
+	</nav>
+	
+	<section class="content">
+	<div class = "content">
+	<form method="post" action="vakcine/edit" >
+		<input type="hidden" name="id" th:value="${vakcina.id}"/>
+		<table class="forma" style="margin-top: 300px; margin-left: 0px;">
+			<caption>Vakcina</caption>
+			<tr><th>Ime:</th><td><input type="text" th:value="${vakcina.ime}" name="ime"/></td></tr>
+			<tr><th>Dostupna kolicina:</th><td><input type="number" th:value="${vakcina.dostupnaKolicina}"
+			 name="dostupnaKolicina" readonly/></td></tr>
+			<tr>
+ 				<th>Proizvodjac vakcine:</th>
+				<td>
+					<select name = "proizvodjacId">
+						<option th:each="itProizvodjacVakcine: ${proizvodjaciVakcine}" 
+						th:value="${itProizvodjacVakcine.id}" 
+						th:text="|${itProizvodjacVakcine.proizvodjac} , ${itProizvodjacVakcine.drzavaProizvodnje} |"
+						 th:selected="${itProizvodjacVakcine.id == vakcina.proizvodjac.id}">
+						</option>
+					</select>
+					
+				</td>
+			</tr>      
+
+	<tr><th></th><td><input  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}"
+	type="submit" value="Izmeni"/></td></tr>
+		
+		</table>
+	</form>
+	
+	<form  method="post" action="vakcine/delete">
+		<input type="hidden" name="id" th:value="${vakcina.id}"/>
+		<table class="forma" style="margin-top: 600px; margin-left: 0px;">
+			<tr><th></th><td><input  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}"
+			 type="submit" value="Obriši"/></td></tr>
+		</table>
+	</form>
+	</div>
+	</section>
+	
+	
+</body>
+</html>

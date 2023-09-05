@@ -1,0 +1,89 @@
+<!DOCTYPE html>    
+<html xmlns:th="http://www.thymeleaf.org">    
+   
+ <head>    
+ 	<meta charset="UTF-8">    
+ 		<base th:href="@{/}">
+ 		<title>Dodaj nabavku</title>  
+ 	<link rel="stylesheet"  type="text/css"  href="css/StiloviTabela.css"/>     
+	 	<link rel="stylesheet"  type="text/css" href="css/StiloviHorizontalniMeni.css"/> 
+ 	   
+ </head>    
+ <body> 
+ <h2>EUprava</h2>   
+ 	 <nav>
+	  <div class="navigation">  
+	 	<ul>     
+	 	<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}"
+	 		><a href="korisnici" >Korisnici</a></li>
+			<li th:if="${session.korisnik != null }"><a href="vakcine">Vakcine</a></li>
+			<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}">
+			<a href="proizvodjaciVakcine">Proizvodjaci vakcine</a></li>
+	 		<li><a href="vesti">Vesti</a></li>   
+	 		<li><a href="vestiOObolelima">Statistika o obolelima</a></li>   
+	 		<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'PACIJENT'}">
+			<a href="primljeneVakcine">Primljene vakcine</a></li>
+			<li  th:if="${session.korisnik != null}">
+			<a href="prijaveZaVakcinaciju">Prijava za vakcinaciju</a></li>
+			<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() != 'PACIJENT'}">
+			<a href="nabavke">Nabavka</a></li>      
+	 		<li><a href="">Odjava</a></li>   
+	 	</ul>     
+	 	</div>
+	</nav>
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	
+	<section class="content">
+	<div class = "content">
+ 	<form method="post" action="nabavke/add">    
+ 		<table>    
+ 			<caption>Zahtev za nabavku</caption>    
+ 			
+ 			
+ 			<tr>
+ 				<th>Vakcina:</th>
+				<td>
+					<select name = "vakcinaId">
+						<option th:each="itVakcine: ${session.vakcine}" 
+						th:value="${itVakcine.id}" 
+						th:text="|${itVakcine.ime}  |">
+						</option>
+					</select>
+					
+				</td>
+			</tr>        
+			<tr><th>Kolicina:</th><td><input type="number" value="" name="kolicina" required/></td></tr>  
+			
+			<tr><th>Komentar:</th><td><input type="text" value="" name="komentar" /></td></tr>  
+			
+				 <tr>
+ 				<th>Status:</th>
+				<td>
+			    <select name="status" >
+			      <option th:each="estatus: ${T(com.ftn.EUprava.model.EStatus).values()}" 
+			                th:value="${estatus}" 
+			              th:text="${estatus}">
+			      </option>
+			    </select>
+			  </td>
+				
+			</tr>      
+			
+ 			<tr><th></th><td><input type="submit" value="Posalji zahtev"/></td> 
+ 			
+ 			   
+ 		</table>    
+ 		
+ 	</form>   
+ 	</div>
+ 		</section>
+ 	<br/>  
+ </body>  
+ </html>  		

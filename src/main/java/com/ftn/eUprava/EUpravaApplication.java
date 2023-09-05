@@ -1,4 +1,4 @@
-package com.ftn.eUprava;
+package com.ftn.EUprava;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,13 +7,15 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 @SpringBootApplication
 public class EUpravaApplication extends SpringBootServletInitializer {
-
+	  
 	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(EUpravaApplication.class);
-	}
-
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(EUpravaApplication.class);
+    }
+	
 	public static void main(String[] args) {
 		SpringApplication.run(EUpravaApplication.class, args);
 	}
 }
+
+

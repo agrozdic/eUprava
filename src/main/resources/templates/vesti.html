@@ -1,0 +1,97 @@
+<!DOCTYPE html> 
+<html xmlns:th="http://www.thymeleaf.org">     
+	<head>     
+		<meta charset="UTF-8">     
+		<base th:href="@{/}">
+		<title>Vesti</title>     
+		<link rel="stylesheet"  type="text/css"  href="css/StiloviTabela.css"/>     
+	 	<link rel="stylesheet"  type="text/css" href="css/StiloviHorizontalniMeni.css"/>   
+	 </head>     
+	 <body>   
+	 <h2>EUprava</h2>
+	 	 <nav>
+	  <div class="navigation">  
+	 	<ul>     
+	 	<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}"
+	 		><a href="korisnici" >Korisnici</a></li>
+			<li th:if="${session.korisnik != null }"><a href="vakcine">Vakcine</a></li>
+			<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}">
+			<a href="proizvodjaciVakcine">Proizvodjaci vakcine</a></li>
+	 		<li><a href="vesti">Vesti</a></li>   
+	 		<li><a href="vestiOObolelima">Statistika o obolelima</a></li>      
+	 		<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'PACIJENT'}">
+			<a href="primljeneVakcine">Primljene vakcine</a></li>
+			<li  th:if="${session.korisnik != null}">
+			<a href="prijaveZaVakcinaciju">Prijava za vakcinaciju</a></li>
+			<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() != 'PACIJENT'}">
+			<a href="nabavke">Nabavka</a></li>  
+	 		<li><a th:if="${session.korisnik == null }" href="">Pocetna</a></li>  
+	 		
+	 	</ul>     
+	 	</div>
+	</nav>
+	
+	 <section class="registrationForm">
+	<div class = "registrationForm">
+	<table th:unless="${session.korisnik == null}"> 
+	<tr><th>Prijavljeni ste kao</th><td><a th:href="|korisnici/details?id=${session.korisnik.id}|" th:text="${session.korisnik.email}"></a>.</td></tr>
+		<tr>
+			<td colspan="2">
+				<ul>
+					<li><a href="korisnici/logout">Odjava</a></li>
+				</ul>
+			</td>
+		</tr>
+	</table>
+	<table th:if="${session.korisnik == null}">
+		<tr><th>Niste prijavljeni</th></tr>
+		<tr>
+			<td>
+				<ul>
+					<li><a href="registracija.html">Registracija</a></li>
+					<li><a href="prijava.html">Prijava</a></li>
+				</ul>
+			</td>
+		</tr>
+	</table>
+	</div>
+	</section>
+	
+	<section class="content">
+	<div class = "content"> 
+	
+	 		<table>     
+	 			<caption>Vesti</caption>     
+	 			<tr>     
+	 				<th>R. br.</th>     
+	 				<th></th>     
+	 				<th>Naziv</th>     
+	 				<th>Sadrzaj</th>      
+	 				<th>Datum i vreme objavljivanja</th>    
+	 				<th></th>    
+	 			</tr>
+	 			<tr th:each="itVest, status: ${vesti}">     
+	 				<td class="broj" th:text="${(status.index + 1)+'.'}"></td>     
+	 				<td><a  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}"
+	 				 th:href="|vesti/details?id=${itVest.id}|" th:text="${itVest.nazivVesti}"></a></td>    
+	 				<td th:text="${itVest.nazivVesti}"></td>    
+	 				<td th:text="${itVest.sadrzajVesti}"></td>    
+	 				<td th:text="${itVest.datumIVremeObjavljivanja}"></td>    
+	 				<td>    
+	 					<form  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}"
+	 					 method="post" action="vesti/delete" >     
+	 						<input type="hidden"  name="id"  th:value="${itVest.id}">     
+	 						<input type="submit"  value="Obriši" >    
+	 					</form>    
+	 				</td>   
+	 			</tr>
+	 		</table>
+	 		</div>
+	 	</section>
+	 	    <div class = 'btn'>  
+	 		<a   th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}"
+	 		 href="vesti/add" class = "btn">Dodaj vest</a>     
+	 	</div>
+	 	
+	 </body>   
+ </html>	

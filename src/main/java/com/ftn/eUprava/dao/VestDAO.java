@@ -1,14 +1,18 @@
-package com.ftn.eUprava.dao;
+package com.ftn.EUprava.dao;
 
 import java.util.List;
-import com.ftn.eUprava.models.*;
+
+import com.ftn.EUprava.model.Vest;
 
 public interface VestDAO {
+	
+	public Vest findOne(Long id);
 
-    Vest findOne(int vestID);
-    List<Vest> findAll();
-    int save(Vest vest);
-    int update(Vest vest);
-    int delete(int vestID);
+	public List<Vest> findAll();
+	
+	public int save(Vest vest);
 
+	public int update(Vest vest);
+
+	public int delete(Long id);
 }

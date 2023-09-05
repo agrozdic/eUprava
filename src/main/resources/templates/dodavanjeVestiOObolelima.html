@@ -1,0 +1,52 @@
+<!DOCTYPE html>    
+ <html xmlns:th="http://www.thymeleaf.org"> 
+    
+ <head>    
+ 	<meta charset="UTF-8">     
+ 	<base th:href="@{/}">
+ 	<title>Dodaj vest o obolelima</title>    
+ 	<link rel="stylesheet" type="text/css" href="css/StiloviForma.css"/>    
+ 	<link rel="stylesheet" type="text/css" href="css/StiloviHorizontalniMeni.css"/>  
+ 	
+ </head>    
+ <body>    
+ <h2>EUprava</h2>
+ 	 <nav>
+	  <div class="navigation">  
+	 	<ul>     
+	 		<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}"
+	 		><a href="korisnici" >Korisnici</a></li>
+			<li th:if="${session.korisnik != null }"><a href="vakcine">Vakcine</a></li>
+			<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'ADMINISTRATOR'}">
+			<a href="proizvodjaciVakcine">Proizvodjaci vakcine</a></li>
+	 		<li><a href="vesti">Vesti</a></li>   
+	 		<li><a href="vestiOObolelima">Statistika o obolelima</a></li> 
+	 		<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() == 'PACIJENT'}">
+			<a href="primljeneVakcine">Primljene vakcine</a></li>
+			<li  th:if="${session.korisnik != null}">
+			<a href="prijaveZaVakcinaciju">Prijava za vakcinaciju</a></li>
+			<li  th:if="${session.korisnik != null && session.korisnik.uloga.toString() != 'PACIJENT'}">
+			<a href="nabavke">Nabavka</a></li>        
+	 		<li><a href="">Odjava</a></li>     
+	 	</ul>     
+	 	</div>
+	</nav>
+	
+	<section class="content">
+	<div class = "content"> 
+ 	<form method="post" action="vestiOObolelima/add">    
+ 		<table>    
+ 			<caption>Vest o obolelima</caption>    
+ 			<tr><th>Oboleli u poslednja 24h:</th><td><input type="number" value="" name="oboleliUPoslednja24h" required/></td></tr>    
+ 			<tr><th>Testirani u poslednja 24h:</th><td><input type="number" value="" name="testiraniUPoslednja24h" required/></td></tr>   
+ 		 <tr><th>Hospitalizovani:</th><td><input type="number" value="" name="hospitalizovani" required/></td></tr>   
+ 		 <tr><th>Na respiratoru:</th><td><input type="number" value="" name="naRespiratoru" required/></td></tr>   
+ 		   <tr><th>Datum i vreme objavljivanja:</th><td><input type="datetime-local" name="datumIVremeObjavljivanja" required/></td></tr>
+ 			<tr><th></th><td><input type="submit" value="Dodaj"/></td>    
+ 		</table>    
+ 	</form>   
+ 	</div>
+ 		</section>
+ 	<br/>  
+ </body>  
+ </html>  		

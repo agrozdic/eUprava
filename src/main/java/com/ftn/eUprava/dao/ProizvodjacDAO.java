@@ -1,14 +1,20 @@
-package com.ftn.eUprava.dao;
+package com.ftn.EUprava.dao;
 
 import java.util.List;
-import com.ftn.eUprava.models.*;
+
+import com.ftn.EUprava.model.ProizvodjacVakcine;
 
 public interface ProizvodjacDAO {
+	
+	public ProizvodjacVakcine findOne(Long id);
+	
+	public List<ProizvodjacVakcine> findAll();
 
-    Proizvodjac findOne(int proizvodjacID);
-    List<Proizvodjac> findAll();
-    int save(Proizvodjac proizvodjac);
-    int update(Proizvodjac proizvodjac);
-    int delete(int proizvodjacID);
+	public int save(ProizvodjacVakcine proizvodjacVakcine);
 
+	public int update(ProizvodjacVakcine proizvodjacVakcine);
+
+	public int delete(Long id);
+
+	
 }
